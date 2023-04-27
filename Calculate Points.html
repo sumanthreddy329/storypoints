@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<!-- Author: Sumanth -->
+<html>
+<head>
+	<title>Calculate Points</title>
+	<!-- Import Materialize CSS -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+	<!-- Set viewport to ensure proper rendering on mobile devices -->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+	<div class="container">
+		<h1 class="center-align">Calculate Points</h1>
+		<div class="row">
+			<form class="col s12" id="points-form">
+				<div class="row">
+					<div class="input-field col s12 m6">
+						<input type="number" id="total-strength" name="total-strength" required>
+						<label for="total-strength">Total Strength</label>
+					</div>
+					<div class="input-field col s12 m6">
+						<input type="number" id="num-holidays" name="num-holidays" required>
+						<label for="num-holidays">No. of Holidays</label>
+					</div>
+					<div class="input-field col s12">
+						<input type="number" id="total-story-points" name="total-story-points" required>
+						<label for="total-story-points">Total Story Points</label>
+					</div>
+				</div>
+				<div class="row center-align">
+					<button class="btn waves-effect waves-light" type="submit" name="action">Calculate Points
+					</button>
+				</div>
+			</form>
+			<div class="col s12" id="points-result"></div>
+		</div>
+	</div>
+
+	<!-- Import Materialize JavaScript -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+	<script>
+		const form = document.getElementById('points-form');
+		const result = document.getElementById('points-result');
+
+		form.addEventListener('submit', (event) => {
+			event.preventDefault();
+			const a = parseFloat(document.getElementById('total-strength').value);
+			const b = parseFloat(document.getElementById('num-holidays').value);
+			const c = parseInt(document.getElementById('total-story-points').value);
+			const pointsToTake = ((a - b) / a) * c;
+			result.innerHTML = `<p class="center-align">Points to take: ${pointsToTake}</p>`;
+		});
+	</script>
+</body>
+</html>
